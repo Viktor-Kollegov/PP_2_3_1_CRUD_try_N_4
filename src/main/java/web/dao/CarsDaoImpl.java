@@ -15,11 +15,6 @@ public class CarsDaoImpl implements CarsDao {
     }
 
     @Override
-    public List<Car> listCars() {
-        return data.getCars();
-    }
-
-    @Override
     public List<Car> byCount(int count) {
         return data.getCars()
                 .stream()

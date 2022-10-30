@@ -15,11 +15,7 @@ public class CarsServiceImpl implements CarsService {
     public CarsServiceImpl(CarsDao carsDao) {
         this.carsDao = carsDao;
     }
-    @Transactional(readOnly = true)
-    @Override
-    public List<Car> listCars() {
-        return carsDao.listCars();
-    }
+
     @Transactional(readOnly = true)
     @Override
     public List<Car> byCount(int count) {
