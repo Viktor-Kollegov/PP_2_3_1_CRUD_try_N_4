@@ -13,7 +13,8 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("web")
+@ComponentScan("web") // почему при замене web на java контролллер теряет index.html (404)???
+// как узнать полный путь к двум пакетам web и hiber для перечисления через запятую?
 public class WebConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
