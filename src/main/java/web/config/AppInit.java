@@ -6,8 +6,10 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
 
     // Метод, указывающий на класс конфигурации
     @Override
-    protected Class<?>[] getRootConfigClasses() {
-        return null;
+    protected Class<?>[] getRootConfigClasses() { //было return null;
+        return new Class<?>[]{
+                AppConfig.class
+        };
     }
 
 
@@ -18,12 +20,21 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
                 WebConfig.class
         };
     }
-
-
     /* Данный метод указывает url, на котором будет базироваться приложение */
     @Override
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
+//    //Возможное решение, но у нас циклическая зависимость?
+//    @Override
+//    public void onStartup(ServletContext aServletContext) throws ServletException {
+//        super.onStartup(aServletContext);
+//        registerHiddenFieldFilter(aServletContext);
+//    }
+//    //Возможное решение, но у нас циклическая зависимость?
+//    private void registerHiddenFieldFilter(ServletContext aContext) {
+//        aContext.addFilter("hiddenHttpMethodFilter",
+//                new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null, true, "/*");
+//    }
 
 }
