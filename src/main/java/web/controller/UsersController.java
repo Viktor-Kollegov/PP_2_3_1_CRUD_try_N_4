@@ -19,7 +19,6 @@ public class UsersController {
         this.userService = userService;
     }
 
-
     @GetMapping()
     public String printWelcome(ModelMap model) throws SQLException {
         model.addAttribute("users", userService.getAllUsers());
