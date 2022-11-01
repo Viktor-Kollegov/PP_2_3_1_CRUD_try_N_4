@@ -46,10 +46,10 @@
       <td th:text = "${user.lastName}"></td>
       <td th:text = "${user.email}"></td>
       <td>
-        <a th:href = "@{/edit_users/{id}(id=${user.getId()})}"
+        <a th:href = "@{/users/edit/{id}(id=${user.id})}"
            class = "btn btn-primary">Update</a>
 
-        <a th:href = "@{/users/{id}(id=${user.getId()})}"
+        <a th:href = "@{/users/delete/{id}(id=${user.id})}"
            class = "btn btn-danger">Delete</a>
 
       </td>

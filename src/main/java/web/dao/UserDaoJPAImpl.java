@@ -51,8 +51,8 @@ public class UserDaoJPAImpl implements UserDao {
     @Override
     public User show(int id) {
         TypedQuery<User> query = entityManager.createQuery(
-                "select u from User u where u.id = :id", User.class);
-        query.setParameter("id", id);
+                "select u from User u where u.id = :id", User.class)
+                .setParameter("id", id);
         return query.getSingleResult();
     }
 
