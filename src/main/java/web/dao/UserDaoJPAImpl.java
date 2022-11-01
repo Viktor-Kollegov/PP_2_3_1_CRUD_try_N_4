@@ -19,14 +19,14 @@ public class UserDaoJPAImpl implements UserDao {
 
     @Override
     public void createUsersTable() {
-        entityManager.createNativeQuery("create table if not exists users " +
-                "(id integer not null auto_increment primary key, name varchar(15), " +
-                "lastName varchar(25), age integer)");
+        entityManager.createNativeQuery("CREATE TABLE IF NOT EXISTS users " +
+                "(id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), " +
+                "lastName VARCHAR(255), age INTEGER)");
     }
 
     @Override
     public void dropUsersTable() {
-        entityManager.createNativeQuery("drop table if exists users");
+        entityManager.createNativeQuery("DROP TABLE IF EXISTS users");
     }
 
     @Override
@@ -51,7 +51,7 @@ public class UserDaoJPAImpl implements UserDao {
     @Override
     public User show(int id) {
         TypedQuery<User> query = entityManager.createQuery(
-                "select u from User u where u.id = :id", User.class)
+                "SELECT u FROM User u WHERE u.id = :id", User.class)
                 .setParameter("id", id);
         return query.getSingleResult();
     }
@@ -65,6 +65,6 @@ public class UserDaoJPAImpl implements UserDao {
 
     @Override
     public void cleanUsersTable() {
-        entityManager.createNativeQuery("delete from users");
+        entityManager.createNativeQuery("DELETE FROM users");
     }
 }
