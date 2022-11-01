@@ -27,14 +27,12 @@ public class Main {
         User user2 = new User("Name2", "LastName2", "sdhsdhsdh@yandex.ru");
         User user3 = new User("Name3", "LastName3", "asgasdghsedh@yandex.ru");
         User user4 = new User("Name4", "LastName4", "dgasrewtewrgshh@yandex.ru");
-        userService.createUsersTable();
         userService.saveUser(user1);
         userService.saveUser(user2);
         userService.saveUser(user3);
         userService.saveUser(user4);
         System.out.println(userService.getAllUsers());
         //userService.cleanUsersTable();
-        //userService.dropUsersTable();
     }
 }
 /**

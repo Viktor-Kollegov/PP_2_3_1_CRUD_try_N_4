@@ -55,6 +55,11 @@ public class AppConfig {
         entityManager.setDataSource(getDataSource());
         entityManager.setPackagesToScan("web");
         Properties properties = new Properties();
+        properties.setProperty("default_encoding", "UTF-8");
+        properties.put("hibernate.connection.charset", "UTF-8");
+        properties.put("hibernate.connection.useUnicode", true);
+        properties.put("hibernate.connection.characterEncoding", "utf-8");
+        properties.put("hibernate.connection.release_mode", "auto");
         properties.put("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
         properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
         entityManager.setJpaProperties(properties);
