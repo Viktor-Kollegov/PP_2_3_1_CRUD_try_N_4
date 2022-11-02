@@ -31,11 +31,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public User findUserById(int id) {
         return userDaoJPA.findUserById(id);
     }
-    @Transactional(readOnly = true)
+    @Transactional
     public List<User> getAllUsers() {
         return userDaoJPA.getAllUsers();
     }
