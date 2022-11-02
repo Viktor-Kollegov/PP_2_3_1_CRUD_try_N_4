@@ -22,6 +22,7 @@ public class Main {
     public static void main(String[] args) throws SQLException {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(web.config.AppConfig.class);
+        //Запускается без вебконфиг и аппинит
         UserService userService = context.getBean(UserService.class);
         User user1 = new User("Name1", "LastName1", "dgshh@yandex.ru");
         User user2 = new User("Name2", "LastName2", "sdhsdhsdh@yandex.ru");
@@ -35,7 +36,3 @@ public class Main {
         //userService.cleanUsersTable();
     }
 }
-/**
- * Data Access Object (DAO) — это класс, содержащий CRUD методы для конкретной модели
- * Логика слоёв: DB (база данных) -> DAO (CRUD методы) -> Service (бизнес-логика) -> Main (запуск программы)
- */

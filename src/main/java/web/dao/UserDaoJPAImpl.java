@@ -18,38 +18,23 @@ public class UserDaoJPAImpl implements UserDao {
     }
 
     @Override
-    public void createUsersTable() {
-        entityManager.createNativeQuery("CREATE TABLE IF NOT EXISTS users " +
-                "(id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), " +
-                "lastName VARCHAR(255), age INTEGER)");
-    }
-
-    @Override
-    public void dropUsersTable() {
-        entityManager.createNativeQuery("DROP TABLE IF EXISTS users");
-    }
-
-    @Override
     public void saveUser(User user) {
         entityManager.persist(user);
     }
 
     @Override
-    public void removeUserById(int id) {
-        User user = entityManager.find(User.class, id);
-        entityManager.remove(user);
+    public void removeUser(User userToDelete) {
+        entityManager.remove(entityManager.contains(userToDelete)
+                ? userToDelete : entityManager.merge(userToDelete));
     }
 
     @Override
-    public void updateUserById(int id, User updatedUser) {
-        User userToBeUpdated = show(id);
-        userToBeUpdated.setFirstName(updatedUser.getFirstName());
-        userToBeUpdated.setLastName(updatedUser.getLastName());
-        userToBeUpdated.setEmail(updatedUser.getEmail());
+    public void updateUser(User updatedUser) {
+        entityManager.merge(updatedUser);
     }
 
     @Override
-    public User show(int id) {
+    public User findUserById(int id) {
         TypedQuery<User> query = entityManager.createQuery(
                 "SELECT u FROM User u WHERE u.id = :id", User.class)
                 .setParameter("id", id);
@@ -58,13 +43,13 @@ public class UserDaoJPAImpl implements UserDao {
 
     @Override
     public List<User> getAllUsers() {
-        String jpql = "SELECT u FROM User u";
-        TypedQuery<User> query = entityManager.createQuery(jpql, User.class);
+        TypedQuery<User> query = entityManager.createQuery("SELECT user FROM User user", User.class); //JPQL
+        // Обязателен ли TypedQuery<User>??
         return query.getResultList();
     }
 
     @Override
     public void cleanUsersTable() {
-        entityManager.createNativeQuery("DELETE FROM users");
+        entityManager.createNativeQuery("DELETE FROM users").executeUpdate();
     }
 }

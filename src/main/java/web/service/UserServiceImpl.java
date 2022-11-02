@@ -16,32 +16,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public void createUsersTable() {
-        userDaoJPA.createUsersTable();
-    }
-    @Transactional
-    public void dropUsersTable() {
-        userDaoJPA.dropUsersTable();
-    }
-    @Transactional
     public void saveUser(User user) {
         userDaoJPA.saveUser(user);
     }
     @Transactional
-    public void removeUserById(int id) {
-        userDaoJPA.removeUserById(id);
+    public void removeUser(User userToDelete) {
+        userDaoJPA.removeUser(userToDelete);
     }
 
     @Override
     @Transactional
-    public void updateUserById(int id, User updatedUser) {
-        userDaoJPA.updateUserById(id, updatedUser);
+    public void updateUser(User updatedUser) {
+        userDaoJPA.updateUser(updatedUser);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public User show(int id) {
-        return userDaoJPA.show(id);
+    public User findUserById(int id) {
+        return userDaoJPA.findUserById(id);
     }
     @Transactional(readOnly = true)
     public List<User> getAllUsers() {

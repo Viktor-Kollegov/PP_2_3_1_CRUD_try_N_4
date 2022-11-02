@@ -14,7 +14,7 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
     @Override
     protected Class<?>[] getRootConfigClasses() { //было return null;
         return new Class<?>[]{
-                AppConfig.class
+                AppConfig.class // так IDEA автоматически подключает данный класс куда надо.
         };
     }
 

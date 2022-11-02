@@ -28,7 +28,7 @@ public class AppConfig {
         this.environment = environment;
     }
 
-//    //Возможное решение проблемы
+    //Возможное решение проблемы
 //    @Bean(name = "mvcHandlerMappingIntrospector")
 //    public HandlerMappingIntrospector mvcHandlerMappingIntrospector() {
 //        return new HandlerMappingIntrospector();
