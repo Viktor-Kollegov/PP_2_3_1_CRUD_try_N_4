@@ -9,16 +9,19 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-    UserDaoJPAImpl userDaoJPA;
+    private final UserDaoJPAImpl userDaoJPA;
 
     public UserServiceImpl(UserDaoJPAImpl userDaoJPA) {
         this.userDaoJPA = userDaoJPA;
     }
 
+    @Override
     @Transactional
     public void saveUser(User user) {
         userDaoJPA.saveUser(user);
     }
+
+    @Override
     @Transactional
     public void removeUser(User userToDelete) {
         userDaoJPA.removeUser(userToDelete);
@@ -31,14 +34,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public User findUserById(int id) {
         return userDaoJPA.findUserById(id);
     }
-    @Transactional
+
+    @Override
     public List<User> getAllUsers() {
         return userDaoJPA.getAllUsers();
     }
+
+    @Override
     @Transactional
     public void cleanUsersTable() {
         userDaoJPA.cleanUsersTable();
